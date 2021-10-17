@@ -1,0 +1,66 @@
+@font-face {
+    font-family: vazir;
+    src: url(../icon-font/fonts/Vazir-Regular.ttf);
+}
+@font-face {
+    font-family: salamat;
+    src: url(../icon-font/fonts/Salamat.ttf);
+}
+body{
+    background-color: #c5e7da  !important;
+}
+main{
+    margin-bottom: 100px;
+    padding: 160px 20px 20px 20px;
+    direction: rtl;
+}
+main h5{
+    margin-bottom: 30px;
+    font-weight: bold;
+    font-family: vazir;
+}
+main table{
+    font-family: vazir;
+}
+main tbody th img{
+    width: 80px;
+    height: 80px;
+}
+main tbody tr td{
+    padding-top: 35px !important;
+}
+main tbody i{
+    cursor: pointer;
+    padding: 10px;
+}
+main tbody tr td:nth-of-type(even){
+    font-family: salamat;
+    font-size: 23px;
+}
+.number input{
+    height:32px;
+    width: 60px;
+    text-align: center;
+    font-family: salamat;
+    font-size: 26px;
+    border:1px solid #ddd;
+    border-radius:4px;
+    display: inline-block;
+    vertical-align: middle;
+}
+.number .plus{
+    padding: 2px 7px;
+}
+.number .minus{
+    padding: 2px 8px;
+}
+.continue-shopping-button{
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+}
+.continue-shopping-button button{
+    font-family: vazir;
+    width: 37%;
+    height: 45px;
+}

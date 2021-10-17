@@ -1,0 +1,438 @@
+@font-face {
+    font-family: vazir;
+    src: url(../icon-font/fonts/Vazir-Regular.ttf);
+}
+@font-face {
+    font-family: salamat;
+    src: url(../icon-font/fonts/Salamat.ttf);
+}
+
+/**********************************/
+
+.alert-ha-hastand{
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translate(-50%);
+}
+.al-mal{
+    direction: rtl !important;
+    font-family: vazir !important;
+    width: 100%;
+    text-align: center;
+}
+
+/**********************************/
+main{
+    height: 2200px;
+    margin-top: 100px;
+    padding: 0 !important;
+    position: relative;
+    overflow-x: hidden;
+}
+.panel-header{
+    width: 100%;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #3c2f2f;
+}
+.panel-header h5{
+    font-family: vazir;
+    font-weight: bold;
+    color: white;
+}
+.panel-header i{
+    position: absolute;
+    right: 20px;
+    color: white;
+    font-size: 25px;
+    cursor: pointer;
+}
+aside{
+    width: 15%;
+    position: absolute;
+    right: -15%;
+    direction: rtl;
+    padding-top: 10px;
+    background-color: #be9b7b;
+    z-index: 1;
+    height: 100vh;
+    transition: right 0.3s;
+}
+.active-aside{
+    right: 0;
+}
+aside ul{
+    padding: 0 8px;
+}
+aside ul li{
+    list-style: none;
+    margin-bottom: 5px;
+    border-radius: 7px;
+    background-color: white;
+}
+aside ul li a{
+    text-decoration: none;
+    color: unset;
+    font-family: vazir;
+    font-size: 17px;
+    font-weight: bold;
+    display: block;
+    padding: 7px;
+}
+aside ul li a:hover{
+    color: unset;
+}
+.active-aside-li{
+    background-color: #3c2f2f;
+    color: white;
+}
+.panel-content{
+    width: 100%;
+    height: 2100px;
+    position: absolute;
+    left: 0;
+    direction: rtl;
+    font-family: vazir;
+    background-color: #fff4e6;
+}
+/********************************************************/
+.all-orders-container{
+    width: 100%;
+    position: absolute;
+    height: fit-content;
+    padding: 15px 25px 0 15px;
+}
+.all-orders-container tbody tr td:not(:nth-child(2)),
+.all-orders-container tbody tr th,
+.all-orders-container tfoot tr:first-of-type td,
+.all-orders-container tfoot tr:nth-of-type(3) td:first-of-type,
+.all-orders-container tfoot tr:nth-of-type(4) td:nth-of-type(2){
+    font-family: salamat;
+    font-size: 22px;
+}
+.all-orders-container tfoot tr:last-of-type td:last-of-type{
+    cursor: pointer;
+}
+.all-orders-container hr{
+    margin: 60px 160px;
+    border-bottom: 2px solid blue;
+}
+.pagination{
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+    margin-bottom: 30px;
+    font-family: salamat;
+    font-size: 24px;
+}
+.page-item a{
+    padding: 0px 15px;
+    border-radius: 5px;
+}
+/********************************************************/
+.all-products-container,
+.all-weblogs-container,
+.all-comments-container,
+.all-users-container,
+.all-messages-container,
+.all-properties{
+    width: 100%;
+    position: absolute;
+    height: fit-content;
+    visibility: hidden;
+    padding: 0 15px;
+}
+.btn-add-pro,
+.btn-add-weblog{
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid green;
+    width: 40%;
+    margin-right: 30%;
+}
+.all-products table,
+.all-weblogs table{
+    margin-top: 40px;
+}
+.all-products tbody td:nth-of-type(2),
+.all-weblogs tbody td:nth-of-type(2),
+.all-products tbody td:nth-of-type(3),
+.all-products tbody th,
+.all-weblogs tbody th,
+.all-comments-container tbody th,
+.all-users-container tbody th,
+.all-users-container tbody td:nth-of-type(3),
+.all-users-container tbody td:nth-of-type(4),
+.all-messages-container tbody tr:nth-of-type(odd) th,
+.all-messages-container tbody tr:nth-of-type(odd) td:nth-of-type(4),
+.all-messages-container tbody tr:nth-of-type(odd) td:nth-of-type(5){
+    font-family: salamat;
+    font-size: 23px;
+}
+.all-products tbody td,
+.all-products tbody th,
+.all-weblogs tbody td,
+.all-weblogs tbody th{
+    vertical-align: middle;
+}
+.all-products tbody td:nth-of-type(4) i,
+.all-products tbody td:nth-of-type(5) i,
+.all-weblogs tbody td:nth-of-type(3) i,
+.all-weblogs tbody td:nth-of-type(4) i{
+    font-size: 20px;
+    cursor: pointer;
+}
+.all-products tbody td a,
+.all-weblogs tbody td a{
+    text-decoration: none;
+    color: unset;
+}
+.product-modal,
+.weblog-modal,
+.comment-modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 4; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  }
+  .pro-modal-content,
+  .weblog-modal-content,
+  .comment-modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 15px;
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+  }
+  .pro-modal-content .pro-close,
+  .weblog-modal-content .weblog-close,
+  .comment-modal-content .comment-close,
+  .pro-modal-content .pro-edit-close,
+  .weblog-modal-content .weblog-edit-close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  .pro-modal-content .pro-close:hover,
+  .weblog-modal-content .weblog-close:hover,
+  .comment-modal-content .comment-close:hover,
+  .pro-modal-content .pro-edit-close:hover,
+  .weblog-modal-content .weblog-edit-close:hover{
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }
+.pro-modal-content form,
+.weblog-modal-content form,
+.comment-modal-content form{
+    width: 100%;
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    padding-right: 50px;
+}
+.pro-modal-content form label,
+.weblog-modal-content form label,
+.comment-modal-content form label{
+    margin: 10px 0;
+}
+.pro-modal-content form input:nth-of-type(2):not(.pro-feature-row input),
+.pro-modal-content form select,
+.pro-modal-content form input:nth-of-type(3),
+.pro-modal-content form input:nth-of-type(10),
+.pro-modal-content form input:nth-of-type(11),
+.pro-modal-content form input:nth-of-type(12),
+.pro-modal-content form input:nth-of-type(13),
+.pro-modal-content form input:nth-of-type(14),
+.pro-modal-content form input:nth-of-type(15)
+.pro-modal-content form textarea{
+    width: 90%;
+    padding: 7px;
+    margin-bottom: 15px;
+}
+.pro-modal-content form textarea{
+    padding: 7px;
+}
+.pro-modal-content form input:nth-of-type(3){
+    font-family: salamat;
+    font-size: 24px;
+}
+.pro-modal-content form input:nth-of-type(3)::placeholder{
+    font-family: vazir;
+    font-size: 17px;
+}
+.pro-modal-content form input:nth-of-type(4),
+.pro-modal-content form input:nth-of-type(5){
+    width: 20%;
+    margin-bottom: 15px;
+    font-family: salamat;
+    font-size: 24px;
+}
+.pro-modal-content form input[type='file']{
+    margin-bottom: 15px;
+}
+.pro-feature-row{
+    display: flex;
+    margin-bottom: 10px;
+}
+.pro-feature-row input{
+    width: 40% !important;
+    padding: 7px;
+}
+.pro-feature-row input:first-of-type{
+    margin-left: 20px;
+}
+.pro-feature-row input{
+    margin-right: 9px;
+}
+.pro-modal-content form button:last-child{
+    margin: 40px 0;
+    width: 60%;
+    padding: 7px;
+    margin-right: 180px;
+}
+/********************************************************/
+
+.weblog-modal form input:nth-of-type(2),
+.weblog-modal form select{
+    margin-bottom: 15px;
+    width: 90%;
+    padding: 7px;
+}
+.weblog-modal form input[type='file']{
+    margin-bottom: 15px;
+}
+.weblog-modal form textarea{
+    height: 500px;
+    padding: 7px;
+}
+.weblog-modal-content form button:last-child{
+    margin: 40px 0;
+    width: 60%;
+    padding: 7px;
+    margin-right: 180px;
+}
+/********************************************************/
+.all-comments-container{
+    padding-top: 20px;
+}
+.all-comments-container tbody tr td:nth-of-type(3){
+    font-family: salamat;
+    font-size: 22px;
+}
+.all-comments-container tbody tr td:last-of-type a{
+    text-decoration: none;
+    font-weight: bold;
+}
+.all-comments-container tbody tr td:last-of-type a:first-of-type{
+    color: green;
+}
+.all-comments-container tbody tr td:last-of-type a:nth-of-type(2){
+    color: red;
+}
+.comment-modal form textarea{
+    width: 90%;
+    margin-bottom: 20px;
+}
+.comment-modal form button{
+    width: 50%;
+    margin-right: 20%;
+}
+/********************************************************/
+.all-users-container tbody tr td{
+    vertical-align: middle;
+}
+.all-users-container tbody tr td:last-of-type a{
+    text-decoration: none;
+    cursor: pointer;
+    padding: 10px;
+}
+.all-users-container tbody tr td:last-of-type a:hover{
+    color: white;
+}
+/********************************************************/
+.all-messages-container{
+    padding-top: 20px;
+}
+.all-messages-container table{
+    border-collapse:separate; 
+    border-spacing: 0 1em;
+}
+.all-messages-container tbody td:nth-of-type(1),
+.all-messages-container tbody td:nth-of-type(2),
+.all-messages-container tbody td:nth-of-type(3){
+    vertical-align: middle;
+}
+/********************************************************/
+.all-properties{
+    padding-top: 20px;
+    display: flex;
+    flex-direction: column;
+}
+.all-properties span:first-child{
+    position: absolute;
+    left: 1%;
+    font-size: 13px;
+}
+.all-properties form h6{
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+.all-properties form h6:not(:first-of-type){
+    margin-top: 40px;
+}
+.all-properties form:nth-of-type(5) h6{
+    margin-top: 60px;
+}
+.all-properties .rrow{
+    margin-right: 60px;
+    margin-bottom: 20px;
+    position: relative;
+    border-bottom: 1px solid gray;
+    padding-bottom: 20px;
+}
+.all-properties .rrow button{
+    width: 10%;
+    margin-right: 10%;
+}
+.all-properties .rrow label:nth-of-type(1){
+    margin-left: 7px;
+}
+.all-properties .rrow label:nth-of-type(2){
+    margin-right: 50px;
+    margin-left: 7px;
+}
+.all-properties .rrow input[type='text']{
+    width: 40%;
+    padding: 7px;
+    border: 1px solid gray;
+    border-radius: 5px;
+}
+.all-properties .manager-prop{
+    display: flex;
+    flex-direction: column;
+    margin-right: 60px;
+    margin-bottom: 20px;
+}
+.all-properties .manager-prop input{
+    margin: 10px 0;
+    padding: 7px;
+    border: 1px solid gray;
+    width: 30%;
+}
+.all-properties form:nth-of-type(5) button{
+    width: 15%;
+    margin-right: 18%;
+}

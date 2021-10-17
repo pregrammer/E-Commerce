@@ -1,0 +1,201 @@
+@font-face {
+    font-family: vazir;
+    src: url(../icon-font/fonts/Vazir-Regular.ttf);
+}
+@font-face {
+    font-family: salamat;
+    src: url(../icon-font/fonts/Salamat.ttf);
+}
+
+/***********************************/
+main{
+    display: flex;
+    padding-top: 150px;
+    margin-bottom: 50px;
+    position: relative;
+}
+aside{
+    width: 30%;
+    direction: rtl;
+    font-family: vazir;
+}
+aside h5{
+    font-weight: bold;
+    margin-right: 40px;
+    margin-bottom: 25px;
+}
+aside ol {
+    list-style: none;
+    counter-reset: item;
+}
+aside ol a{
+    text-decoration: none;
+    color: unset;
+}
+aside ol a:hover{
+    color: unset;
+}
+aside li{
+    counter-increment: item;
+    padding: 10px;
+    border-radius: 10%;
+    margin-bottom: 7px;
+    background-color: rgb(223, 253, 219);
+}
+aside ol li:before {
+    margin-left: 5px;
+    font-family: salamat;
+    content: counter(item);
+    background: rgb(38, 148, 38);
+    border-radius: 100%;
+    color: white;
+    width: 1.2em;
+    text-align: center;
+    display: inline-block;
+}
+aside button{
+    margin-right: 70px;
+    margin-top: 10px;
+    font-size: 14px !important;
+}
+.weblog-content{
+    width: 69.6%;
+    position: absolute;
+    right: 0;
+    direction: rtl;
+}
+.weblog-content img{
+    width: 95%;
+    height: 550px;
+    margin-right: 27px;
+}
+.weblog-title{
+    height: 60px;
+    width: 100%;
+    margin-top: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 30px;
+}
+.weblog-title h4{
+    font-family: vazir;
+    font-weight: bold;
+}
+.weblog-title span{
+    font-family: salamat;
+    font-size: 22px;
+}
+.weblog-illustration{
+    width: 100%;
+    margin: 15px 0;
+    padding: 10px 30px;
+}
+.weblog-illustration p{
+    line-height: 30px;
+    font-family: vazir;
+    font-size: 17px;
+}
+.weblog-share{
+    margin-bottom: 20px;
+    margin-right: 35%;
+}
+.weblog-share span:first-child{
+    margin-left: 10px;
+    font-family: vazir;
+}
+.weblog-share span:last-child a{
+    text-decoration: none;
+    color: gray;
+    margin-left: 7px;
+    font-size: 20px;
+}
+.weblog-share span a:hover{
+    color: black;
+}
+.comments-container{
+    width: 100%;
+    padding: 20px 40px;
+}
+.comments-container h3{
+    font-family: vazir;
+    font-weight: bold;
+    margin-bottom: 40px;
+}
+.comment-card{
+    width: 100%;
+    height: fit-content;
+    direction: rtl;
+    padding: 10px 20px;
+    background-color: rgb(229, 238, 237);
+    margin-bottom: 15px;
+    font-family: vazir;
+}
+.reply-container{
+    color: seagreen;
+}
+.reply-container h6{
+    padding-right: 40px;
+    line-height: 30px;
+}
+
+.comment-card h5{
+    font-weight: bold;
+}
+.comment-card p:first-of-type{
+    font-family: salamat;
+    font-size: 20px;
+}
+.comment-card p:last-of-type{
+    line-height: 30px;
+}
+.pagination{
+    display: flex;
+    justify-content: center;
+    font-family: salamat;
+    font-size: 24px;
+}
+.page-item a{
+    padding: 0px 15px;
+    border-radius: 5px;
+}
+.page-link{
+    z-index: -1 !important;
+}
+.add-comment-container{
+    height: 400px;
+    width: 100%;
+    margin-top: 35px;
+    direction: rtl;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    font-family: vazir;
+}
+.add-comment-container h5{
+    position: absolute;
+    top: 0;
+    font-weight: bold;
+}
+.add-comment-container form input{
+    width: 330px;
+    padding: 8px;
+    margin-left: 10px;
+    border: 2px solid rgb(27, 224, 27);
+}
+.add-comment-container textarea{
+    width: 674px;
+    border: 2px solid rgb(27, 224, 27);
+    margin-top: 10px;
+    padding: 10px;
+}
+.add-comment-container button{
+    width: 674px;
+    margin-top: 5px;
+}
+footer{
+    width: 100vw;
+    left: 10.8%;
+    direction: ltr;
+}

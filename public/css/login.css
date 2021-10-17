@@ -1,0 +1,116 @@
+@font-face {
+    font-family: vazir;
+    src: url(../icon-font/fonts/Vazir-Regular.ttf);
+}
+@media only screen and (max-width: 600px) {
+    .logo img{
+        width: 160px;
+    }
+    main{
+        width: 80%;
+    }
+    .logo .ti-arrow-left{
+        left: 18%;
+    }
+}
+main:nth-of-type(2),
+main:last-child{
+    display: none;
+}
+.authentication-container{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+main{
+    border: 1px solid rgb(218, 211, 211);
+    padding: 15px;
+    margin-bottom: 60px;
+    border-radius: 5px;
+}
+.content{
+    height: 420px;
+}
+.logo{
+    height: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+.logo img{
+    width: 180px;
+}
+.logo .ti-arrow-left{
+    position: absolute;
+    margin-right: 20%;
+    cursor: pointer;
+}
+form{
+    display: flex;
+    flex-direction: column;
+    direction: rtl;
+    font-family: vazir;
+}
+form label{
+    color: black;
+}
+form label:nth-of-type(1),
+form label:nth-of-type(2){
+    font-weight: bold;
+}
+label:nth-of-type(3){
+    font-size: 15px;
+    width: fit-content;
+}
+#remember-me{
+    margin-left: 5px;
+}
+form input{
+    margin-bottom: 15px;
+}
+form input[type='email'],
+form input[type='password']{
+    border: 1px solid rgb(187, 181, 181);
+    margin-top: 10px;
+    padding: 7px;
+    outline: none;
+    border-radius: 5px;
+}
+form input[type='email']:focus,
+form input[type='password']:focus{
+    border: 1px solid green;
+}
+form input[type='submit']{
+    margin-top: 10px;
+}
+.buttom-of-form{
+    margin-top: 10px;
+    height: 30px;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+    border-top: 1px solid gray;
+    padding-top: 10px;
+}
+.buttom-of-form a{
+    font-family: vazir;
+    text-decoration: none;
+    color: gray;
+    font-size: 15px;
+    transition: all 0.3s;
+}
+.buttom-of-form a:hover{
+    color: black;
+}
+.register-container form label:nth-of-type(3){
+    font-weight: bold;
+}
+.register-container .content{
+    height: 430px;
+}
+.reset-pass-container .content{
+    height: 220px;
+}

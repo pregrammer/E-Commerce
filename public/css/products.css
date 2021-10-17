@@ -1,0 +1,239 @@
+@font-face {
+    font-family: vazir;
+    src: url(../icon-font/fonts/Vazir-Regular.ttf);
+}
+@font-face {
+    font-family: salamat;
+    src: url(../icon-font/fonts/Salamat.ttf);
+}
+main{
+    padding: 150px 0 0 0 !important;
+}
+.top-products{
+    height: 120px;
+    display: flex;
+    justify-content: space-between;
+}
+.range-container{
+    width: 40%;
+    height: 100%;
+    text-align: right;
+}
+.range-container label{
+    font-family: vazir;
+    font-weight: bold;
+}
+.range-price{
+    text-align: center;
+}
+.range-price span{
+    font-family: salamat;
+    font-size: 23px;
+}
+.range-price button{
+    font-family: vazir;
+    border: 1px solid rgb(9, 101, 221);
+    border-radius: 7px;
+    background-color: white;
+    color: black;
+    padding: 2px 5px;
+    margin-right: 7px;
+    transition: all 0.2s;
+}
+.range-price button:hover{
+    color: white;
+    background-color: rgb(9, 101, 221);
+}
+.title-container{
+    width: 30%;
+    height: 100%;
+    direction: rtl;
+    display: flex;
+    align-items: center;
+}
+.title-container h5{
+    font-family: vazir;
+    font-weight: bold;
+}
+.title-container span{
+    font-family: salamat;
+    font-size: 20px;
+    margin-right: 5px;
+    margin-bottom: 5px;
+}
+.product-cards{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+}
+.product-cards a{
+    text-decoration: none;
+    color: unset;
+    margin: 0 10px 10px 10px;
+}
+.product-cards a:hover{
+    color: unset;
+}
+.product-card{
+    min-width: 309px;
+    max-width: 309px;
+    border-radius: 10px;
+    height: 410px;
+    padding: 30px 10px 10px 10px;
+    position: relative;
+    transition: all 0.3s;
+    border: 1px solid rgb(216, 216, 216);
+}
+.product-card:hover{
+    box-shadow: 0 4px 12px 2px rgba(0, 0, 0, 0.1);
+}
+.card-image{
+    height: 190px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.card-image img{
+    height: 190px;
+    width: 190px;
+}
+.card-description{
+    min-height: 40px;
+    max-height: 40px;
+    margin: 20px 0;
+}
+.card-description p{
+    font-family: vazir;
+    font-size: 14px;
+    direction: rtl;
+    color: rgb(112, 110, 110);
+}
+.card-price-detail{
+    height: 90px;
+    width: 170px;
+    position: relative;
+    font-size: 17px;
+}
+.discount-detail{
+    position: relative;
+    font-family: salamat;
+}
+.discount-detail del{
+    font-size: 25px;
+    position: absolute;
+    color: gray;
+    top: 6px;
+    margin-left: 5px;
+}
+.discount-detail span:first-child{
+    font-size: 16px;
+    margin-top: 6px;
+}
+.price-detail{
+    position: absolute;
+    direction: rtl;
+    font-family: vazir;
+    left: 0;
+}
+.price-detail span:first-child{
+    font-family: salamat;
+    font-size: 28px;
+}
+.card-price-detail .discount-detail del{
+    top: 6px;
+}
+.card-price-detail .price-detail span:first-child{
+    font-family: salamat;
+    font-size: 29px;
+}
+.card-price-detail .price-detail span:last-child{
+    font-size: 14px;
+}
+.run-out-text{
+    text-align: right;
+    margin-top: 30px;
+}
+.run-out-text span{
+    font-family: vazir;
+    font-size: 17px;
+    color: gray;
+}
+.pagination{
+    display: flex;
+    justify-content: center;
+    margin: 25px 0;
+    font-family: salamat;
+    font-size: 24px;
+}
+.page-item a{
+    padding: 0px 15px;
+    border-radius: 5px;
+}
+
+/*************************************/
+
+@media only screen and (max-width: 600px){
+
+    main{
+        padding-top: 20px !important;
+    }
+    .product-cards a{
+        margin-top: 10px;
+    }
+    .product-cards a:first-child{
+        margin-top: 40px;
+    }
+    .product-card{
+        display: flex;
+        flex-direction: row-reverse;
+        min-width: 380px;
+        max-width: 380px;
+        height: 180px;
+        padding: 5px;
+    }
+    .card-image{
+        height: 170px;
+    }
+    .card-image img{
+        width: 150px;
+        height: 170px;
+    }
+    .card-description{
+        margin: 0;
+        min-height: 90px;
+        max-height: 90px;
+        margin-right: 5px;
+        position: absolute;
+        left: 5px;
+        width: 200px;
+    }
+    .card-price-detail{
+        height: 80px;
+        width: 200px;
+        position: relative;
+        top: 90px;
+        right: 10px;
+    }
+    .run-out-text{
+        width: 200px;
+        text-align: center;
+    }
+    .top-products{
+        flex-direction: column-reverse;
+        margin-left: 10%;
+        margin-top: 15%;
+    }
+    .range-container{
+        width: 80%;
+        margin-left: 5%;
+    }
+    .title-container{
+        width: 90%;
+        margin-bottom: 8%;
+        border-bottom: 1px solid rgb(168, 161, 161);
+    }
+    .title-container h5{
+        font-size: 16px;
+    }
+
+}

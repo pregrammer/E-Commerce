@@ -1,0 +1,144 @@
+li{
+    list-style: none;
+}
+.be-centered{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+footer{
+    position: relative;
+    top: 70px;
+    background-color: white;
+    border-top: 1px solid rgb(201, 201, 201);
+}
+footer .scroll-to-top{
+    font-family: vazir;
+    padding: 7px;
+    border: 1px solid gray;
+    width: fit-content;
+    position: absolute;
+    top: 78px;
+    left: 50px;
+    cursor: pointer;
+}
+.footer-container{
+    display: flex;
+}
+.footer-column{
+    width: 16.7%;
+    height: 417px;
+    direction: rtl;
+    font-family: vazir;
+}
+.footer-column h6{
+    margin-top: 80px;
+    font-weight: bold;
+}
+.sub-footer-tag{
+    display: flex;
+    flex-direction: column;
+}
+.sub-footer-tag a{
+    text-decoration: none;
+    color: gray;
+    margin-top: 15px;
+}
+.footer-about,
+.footer-with-us{
+    width: 33.3%;
+}
+.footer-about p{
+    color: gray;
+    margin-top: 25px;
+}
+.footer-about p:nth-child(4){
+    font-family: salamat;
+    font-size: 25px;
+}
+.footer-about i{
+    margin-left: 5px;
+}
+.footer-about .ti-headphone-alt{
+    font-size: 18px;
+}
+.sub-footer-tag a:hover{
+    color: gray;
+}
+.footer-brand-icons{
+    margin-top: 25px;
+}
+.footer-brand-icons a{
+    margin-left: 20px;
+    text-decoration: none;
+    color: gray;
+    font-size: 20px;
+}
+.footer-brand-icons a:hover{
+    color: black;
+}
+.footer-receive-news-control{
+    margin-top: 20px;
+}
+.footer-receive-news-control button {
+    background-color: white; 
+    color: black; 
+    border: 2px solid #008CBA;
+    padding: 6px 10px;
+    border-radius: 5px;
+}
+.footer-receive-news-control button:hover{
+    background-color: #008CBA;
+    color: white;
+}
+.footer-receive-news-control input{
+    width: 290px;
+    border: none;
+    outline: none;
+    background: rgb(231, 227, 227);
+    padding: 10px;
+    border-radius: 5px;
+}
+.footer-footer{
+    border-top: 1px solid gray;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.footer-footer p{
+    font-family: vazir;
+    color: gray;
+    margin-top: 20px;
+}
+
+@media only screen and (max-width: 600px) {
+
+    footer{
+        padding-top: 20px;
+    }
+    .footer-column h6{
+        margin-top: 5px;
+    }
+    .footer-container{
+        flex-direction: column-reverse;
+    }
+    .footer-column {
+        width: unset;
+        height: unset;
+        margin-bottom: 20px;
+    }
+    .footer-brand-icons{
+        margin-top: 15px;
+        margin-bottom: 20px;
+    }
+    .footer-footer p{
+        font-size: 13px;
+    }
+    footer .scroll-to-top{
+        top: 8px;
+        left: 5px;
+        padding: 3px;
+    }
+
+}
