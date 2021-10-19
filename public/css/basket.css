@@ -9,7 +9,7 @@
 body{
     background-color: #c5e7da  !important;
 }
-main{
+main{ 
     margin-bottom: 100px;
     padding: 160px 20px 20px 20px;
     direction: rtl;
@@ -33,9 +33,17 @@ main tbody i{
     cursor: pointer;
     padding: 10px;
 }
-main tbody tr td:nth-of-type(even){
+main tbody tr td:nth-of-type(2){
     font-family: salamat;
     font-size: 23px;
+}
+main tbody tr td:nth-of-type(4){
+    font-size: 18px;
+    padding-top: 40px !important;
+}
+main tbody tr td:nth-of-type(4) a{
+    text-decoration: none;
+    color: unset;
 }
 .number input{
     height:32px;

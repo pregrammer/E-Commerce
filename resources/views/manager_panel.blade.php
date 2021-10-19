@@ -15,12 +15,11 @@
 
     <div class="alert-ha-hastand">
         @if (session('status'))
-            <div class="alert alert-info alert-dismissible fade show al-mal" role="alert">
+            <div class="alert alert-info alert-dismissible fade show al-mal" id="my_manager_alert" role="alert">
                 <strong>{{ session('status') }}</strong>
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
         @endif
-
     </div>
 
     <main class="container-fluid">
@@ -802,9 +801,9 @@
                         @forelse ($users as $user)
                         <tr>
                             <th scope="row">{{$loop->index + 1}}</th>
-                            <td>{{$users_details[$loop->index]->fullname}}</td>
+                            <td>{{$users_details[$loop->index][0]}}</td>
                             <td>{{$user->email}}</td>
-                            <td>{{$users_details[$loop->index]->phoneNumber}}</td>
+                            <td>{{$users_details[$loop->index][1]}}</td>
                             <td>{{$user->created_at}}</td>
                             @if ($user->active)
                             <td><a href="{{ route('change-user-active', $user->id) }}" class="badge rounded-pill bg-success mt-2">آزاد</a></td>

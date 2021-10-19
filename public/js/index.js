@@ -8,7 +8,9 @@ $(document).ready(function () {
 
   // start of main js
 
-
+  $("#my_index_alert").fadeTo(2000, 500).slideUp(500, function () {
+    $(this).slideUp(500);
+  });
 
   $('.wow-cards button:first-child').click(function (e) {
     e.preventDefault();

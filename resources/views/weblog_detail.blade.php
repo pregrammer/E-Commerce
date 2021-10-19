@@ -33,7 +33,7 @@
                 </a>
                 @endforelse
             </ol>
-            <button class="btn btn-outline-success">افزودن مطلب به لیست علاقه ی مندی ها</button>
+            <a href="{{ route('add_to_favorite_weblog', $weblog->id) }}"><button class="btn btn-outline-success">افزودن مطلب به لیست علاقه ی مندی ها</button></a>
         </aside>
 
         <div class="weblog-content">

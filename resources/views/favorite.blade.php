@@ -33,29 +33,27 @@
 
             <tbody>
 
+                @if (isset($product_favorite_data))
+                    @if (Cookie::get('favorite_product_cart'))
+                        @forelse ($product_favorite_data as $data)
+                        <tr>
+                            <th scope="row"><img src="{{ asset('images/products/'. $data['item_image']) }}" alt=""></th>
+                            <td>{{$data['item_name']}}</td>
+                            <td>{{$data['item_price']}} تومان</td>
+                            <td><a href="{{ route('add_product_from_favorite_to_basket', $data['item_id']) }}"><i class="ti-check"></i></a></td>
+                            <td><a href="{{ route('delete_product_from_favorite_cart', $data['item_id']) }}"><i class="ti-close"></i></a></td>
+                        </tr>
+                        @empty
+                        <tr>
+                            <td colspan="5" style="color: rgb(230, 77, 77);">محصولی در لیست علاقه مندی شما وجود ندارد!</td>
+                        </tr>
+                        @endforelse
+                    @endif
+                @else
                 <tr>
-                    <th scope="row"><img src="images/giah.jpg" alt=""></th>
-                    <td>خرما</td>
-                    <td>49000 تومان</td>
-                    <td><i class="ti-check"></i></td>
-                    <td><i class="ti-close"></i></td>
+                    <td colspan="5" style="color: rgb(230, 77, 77);">محصولی در لیست علاقه مندی شما وجود ندارد!</td>
                 </tr>
-
-                <tr>
-                    <th scope="row"><img src="images/giah.jpg" alt=""></th>
-                    <td>خرما</td>
-                    <td>49000 تومان</td>
-                    <td><i class="ti-check"></i></td>
-                    <td><i class="ti-close"></i></td>
-                </tr>
-
-                <tr>
-                    <th scope="row"><img src="images/giah.jpg" alt=""></th>
-                    <td>خرما</td>
-                    <td>49000 تومان</td>
-                    <td><i class="ti-check"></i></td>
-                    <td><i class="ti-close"></i></td>
-                </tr>
+                @endif
 
             </tbody>
 
@@ -82,26 +80,26 @@
 
             <tbody>
 
+                @if (isset($weblog_favorite_data))
+                    @if (Cookie::get('favorite_weblog_cart'))
+                        @forelse ($weblog_favorite_data as $data)
+                        <tr>
+                            <th scope="row">{{$loop->index + 1}}</th>
+                            <td>{{$data['item_title']}}</td>
+                            <td><a href="{{ route('weblog-detail', $data['item_id']) }}">مطالعه</a></td>
+                            <td><a href="{{ route('delete_weblog_from_favorite_cart', $data['item_id']) }}"><i class="ti-close"></i></a></td>
+                        </tr>
+                        @empty
+                        <tr>
+                            <td colspan="4" style="color: rgb(230, 77, 77);">مطلبی در لیست علاقه مندی شما وجود ندارد!</td>
+                        </tr>
+                        @endforelse
+                    @endif
+                @else
                 <tr>
-                    <th scope="row">1</th>
-                    <td>خاصیت های عرق بیدمشک</td>
-                    <td><a href="#">مطالعه</a></td>
-                    <td><i class="ti-close"></i></td>
-                </tr>
-
-                <tr>
-                    <th scope="row">2</th>
-                    <td>خاصیت های عرق بیدمشک</td>
-                    <td><a href="#">مطالعه</a></td>
-                    <td><i class="ti-close"></i></td>
-                </tr>
-
-                <tr>
-                    <th scope="row">3</th>
-                    <td>خاصیت های عرق بیدمشک</td>
-                    <td><a href="#">مطالعه</a></td>
-                    <td><i class="ti-close"></i></td>
-                </tr>
+                    <td colspan="5" style="color: rgb(230, 77, 77);">مطلبی در لیست علاقه مندی شما وجود ندارد!</td>
+                </tr> 
+                @endif
 
             </tbody>
 

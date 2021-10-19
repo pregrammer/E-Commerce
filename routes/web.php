@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\BasketController;
+use App\Http\Controllers\FavoriteController;
 use App\Http\Controllers\indexController;
 use App\Http\Controllers\managerController;
 use App\Http\Controllers\MessageController;
@@ -8,6 +10,7 @@ use App\Http\Controllers\sitepropertyController;
 use App\Http\Controllers\useraccountController;
 use App\Http\Controllers\userprofileController;
 use App\Http\Controllers\WeblogController;
+use Barryvdh\Debugbar\Controllers\BaseController;
 use Illuminate\Support\Facades\Route;
 /*
 |--------------------------------------------------------------------------
@@ -54,6 +57,8 @@ Route::get('/get-product/{pid}', [ProductController::class, 'get_product_by_id']
 Route::get('/delete-product/{pid}', [ProductController::class, 'delete'])->name('delete-product');
 
 
+
+
 Route::get('/weblog-detail/{wid}', [WeblogController::class, 'indexd'])->name('weblog-detail');
 Route::get('/weblogs', [WeblogController::class, 'indexs'])->name('weblogs');
 Route::get('/weblogs/{wid}', [WeblogController::class, 'indexss'])->name('weblogss');
@@ -63,17 +68,21 @@ Route::get('/get-weblog/{wid}', [WeblogController::class, 'get_weblog_by_id']);
 Route::get('/delete-weblog/{wid}', [WeblogController::class, 'delete'])->name('delete-weblog');
 
 
-
-Route::get('/basket', function () {
-    return view('basket');
-});
-
-Route::get('/favorite', function () {
-    return view('favorite');
-});
-
-
 Route::post('/change-site-gallery', [sitepropertyController::class, 'change_gallery'])->name('change-site-gallery');
 Route::post('/change-site-topad', [sitepropertyController::class, 'change_topad'])->name('change-site-topad');
 Route::post('/change-site-downad', [sitepropertyController::class, 'change_downad'])->name('change-site-downad');
 Route::post('/change-site-fourad', [sitepropertyController::class, 'change_fourad'])->name('change-site-fourad');
+
+
+Route::get('/basket', [BasketController::class, 'index']);
+Route::get('/basket/add/{pid}', [BasketController::class, 'add_to_basket'])->name('add_to_basket');
+Route::get('/basket/delete/{pid}', [BasketController::class, 'delete_from_basket'])->name('delete_from_basket');
+
+
+Route::get('/favorite', [FavoriteController::class, 'index']);
+Route::get('/favorite/product/add/{pid}', [FavoriteController::class, 'add_to_favorite_product'])->name('add_to_favorite_product');
+Route::get('/favorite/product/delete/{pid}', [FavoriteController::class, 'delete_product_from_favorite_cart'])->name('delete_product_from_favorite_cart');
+Route::get('/favorite/product/add-to-basket/{pid}', [FavoriteController::class, 'add_product_from_favorite_to_basket'])->name('add_product_from_favorite_to_basket');
+
+Route::get('/favorite/weblog/add/{wid}', [FavoriteController::class, 'add_to_favorite_weblog'])->name('add_to_favorite_weblog');
+Route::get('/favorite/weblog/delete/{wid}', [FavoriteController::class, 'delete_weblog_from_favorite_cart'])->name('delete_weblog_from_favorite_cart');

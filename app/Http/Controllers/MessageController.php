@@ -39,8 +39,6 @@ class MessageController extends Controller
             'description' => $request->description
         ]);
 
-        Session::put('success-register', 'پیام شما با موفقیت ارسال شد!');
-
-        return redirect('/');
+        return redirect('/')->with('status', 'پیام شما با موفقیت ارسال شد!');
     }
 }

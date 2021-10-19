@@ -1,5 +1,9 @@
 $(document).ready(function () {
 
+    $("#my_manager_alert").fadeTo(2000, 500).slideUp(500, function () {
+        $(this).slideUp(500);
+    });
+
     $("aside ul li:not(:last-child)").click(function () {
         $(this).addClass("active-aside-li").siblings().removeClass("active-aside-li")
         $('main aside').toggleClass('active-aside')
@@ -43,13 +47,13 @@ $(document).ready(function () {
 
 
     var proeditmodal = document.getElementById("proEditModal");
-    $('.pro-edit-close').click(function (e) { 
+    $('.pro-edit-close').click(function (e) {
         e.preventDefault();
         proeditmodal.style.display = "none";
     });
 
     var weblogeditmodal = document.getElementById("weblogEditModal");
-    $('.weblog-edit-close').click(function (e) { 
+    $('.weblog-edit-close').click(function (e) {
         e.preventDefault();
         weblogeditmodal.style.display = "none";
     });
@@ -82,7 +86,7 @@ $(document).ready(function () {
 
     var commentmodal = document.getElementById("commentModal");
     var commentspan = document.getElementsByClassName("comment-close")[0];
-    $('.all-comments-container tbody tr td:last-of-type a:last-of-type').click(function (e) { 
+    $('.all-comments-container tbody tr td:last-of-type a:last-of-type').click(function (e) {
         e.preventDefault();
         commentmodal.style.display = "block";
     });
@@ -90,32 +94,32 @@ $(document).ready(function () {
         commentmodal.style.display = "none";
     }
 
-    
+
 
     window.onclick = function (event) {
         if (event.target == promodal) {
             promodal.style.display = "none";
-        }else if (event.target == weblogmodal) {
+        } else if (event.target == weblogmodal) {
             weblogmodal.style.display = "none";
-        }else if (event.target == commentmodal) {
+        } else if (event.target == commentmodal) {
             commentmodal.style.display = "none";
-        }else if (event.target == proeditmodal) {
+        } else if (event.target == proeditmodal) {
             proeditmodal.style.display = "none";
-        }else if (event.target == weblogeditmodal) {
+        } else if (event.target == weblogeditmodal) {
             weblogeditmodal.style.display = "none";
         }
     }
 
 
-    $('.all-orders-container tfoot tr:last-of-type td:last-of-type').click(function (e) { 
+    $('.all-orders-container tfoot tr:last-of-type td:last-of-type').click(function (e) {
         e.preventDefault();
-        if ($(this).hasClass("bg-success")){
+        if ($(this).hasClass("bg-success")) {
             $(this).removeClass("bg-success").addClass("bg-warning").text("در انتظار بررسی")
-        }else{
+        } else {
             $(this).removeClass("bg-warning").addClass("bg-success").text("بررسی شده")
         }
     });
-    
+
     /*$('.all-users-container tbody tr td:last-of-type').click(function (e) { 
         e.preventDefault();
         if ($(this).hasClass("bg-success")){
@@ -125,15 +129,15 @@ $(document).ready(function () {
         }
     });*/
 
-    
+
 
 });
-function showproducteditmodal(pid){
+function showproducteditmodal(pid) {
 
-    $.get("/get-product/"+pid, function(data, status){
+    $.get("/get-product/" + pid, function (data, status) {
         //alert("Data: " + data.name + "\nStatus: " + status);
 
-        $('#proEditModal form').attr('action', "/product-detail/edit/"+pid);
+        $('#proEditModal form').attr('action', "/product-detail/edit/" + pid);
 
         $('#proEditModal form input:nth-of-type(2):not(.pro-feature-row input)').val(data.name);
         $('#proEditModal form select option').eq(data.groupKind - 1).prop('selected', true);
@@ -160,22 +164,21 @@ function showproducteditmodal(pid){
         $('#proEditModal .pro-feature-row input[name="feature5"]').val(data.feature5);
         $('#proEditModal .pro-feature-row input[name="title6"]').val(data.title6);
         $('#proEditModal .pro-feature-row input[name="feature6"]').val(data.feature6);
-      });
+    });
 
     document.getElementById("proEditModal").style.display = "block";
 }
 
-function showweblogeditmodal(wid)
-{
-    $.get("/get-weblog/"+wid, function(data, status){
+function showweblogeditmodal(wid) {
+    $.get("/get-weblog/" + wid, function (data, status) {
         //alert("Data: " + data.title + "\nStatus: " + status);
 
-        $('#weblogEditModal form').attr('action', "/weblog-detail/edit/"+wid);
+        $('#weblogEditModal form').attr('action', "/weblog-detail/edit/" + wid);
 
         $('#weblogEditModal form input:nth-of-type(2)').val(data.title);
         $('#weblogEditModal form select option').eq(data.groupKind - 1).prop('selected', true);
         $('#weblogEditModal form textarea').val(data.description);
-      });
+    });
 
     document.getElementById("weblogEditModal").style.display = "block";
 }

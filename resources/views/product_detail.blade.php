@@ -47,8 +47,8 @@
                 </ul>
             </div>
             <div class="add-product-buttons">
-                <button class="btn btn-success">افزودن به سبد خرید</button>
-                <button class="btn btn-success">افزودن به لیست علاقه مندی</button>
+                <a href="{{ route('add_to_basket', $product->id) }}"><button class="btn btn-success">افزودن به سبد خرید</button></a>
+                <a href="{{ route('add_to_favorite_product', $product->id) }}"><button class="btn btn-success">افزودن به لیست علاقه مندی</button></a>
                 <span>اشتراک گذاری:</span>
                 <span>
                     <a href="#"><i class="ti-instagram"></i></a>

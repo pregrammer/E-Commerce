@@ -69,7 +69,7 @@ class userprofileController extends Controller
             ]);
         }
 
-        return redirect('/');
+        return redirect('/')->with('status', 'مشخصات پروفایل با موفقیت ثبت شد!');
     }
 
     public function edit_pass(Request $request)
@@ -86,7 +86,7 @@ class userprofileController extends Controller
             'password' => Hash::make($request->password)
         ]);
 
-        return redirect('/');
+        return redirect('/')->with('status', 'رمز عبور شما با موفقیت ویرایش شد!');
     }
 
 }

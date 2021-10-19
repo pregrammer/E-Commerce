@@ -22,20 +22,11 @@
     <main>
 
         <div class="alert-ha-hastand">
-            @if (Session::has('success-register'))
-                <div class="alert alert-success alert-dismissible fade show al-mal" role="alert">
-                    <strong>{{ Session::get('success-register') }}</strong>
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>
-                {{Session::forget('success-register')}}
-            @endif
-
-            @if (Session::has('message-sent'))
-                <div class="alert alert-success alert-dismissible fade show al-mal" role="alert">
-                    <strong>{{ Session::get('message-sent') }}</strong>
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>
-                {{Session::forget('message-sent')}}
+            @if (session('status'))
+            <div class="alert alert-info alert-dismissible fade show al-mal" id="my_index_alert" role="alert">
+                <strong>{{ session('status') }}</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
             @endif
         </div>
         

@@ -50,7 +50,7 @@
                         </div>
                         <div class="weblog-card-texts">
                             <h5>{{$weblog->title}}</h5>
-                            <p>{{$weblog->description}}</p>
+                            <p>{{Str::limit($weblog->description, 230)}}</p>
                         </div>
                         <div class="weblog-card-detail">
                             <span>{{$weblog->created_at}}<i class="ti-time"></i></span>
