@@ -72,3 +72,71 @@ main tbody tr td:nth-of-type(4) a{
     width: 37%;
     height: 45px;
 }
+/******************/
+.payment-modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 4; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  }
+  .payment-modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 15px;
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+  }
+  .payment-modal-content .payment-close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  .payment-modal-content .payment-close:hover{
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }
+.payment-modal-content form{
+    width: 100%;
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    padding-right: 50px;
+}
+.payment-list-container{
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    font-family: vazir;
+}
+.payment-list-container h5{
+    border: 1px solid #000;
+    padding: 20px;
+    width: fit-content;
+    margin-right: 35%;
+    border-radius: 50%;
+}
+.payment-list-container .second-div span,
+.payment-list-container .third-div span:first-of-type,
+.totall-prices span:first-of-type,
+.totall-prices span:nth-of-type(3){
+    font-family: salamat;
+    font-size: 23px;
+}
+.payment-modal-content form button:last-of-type{
+    width: 30%;
+    font-family: vazir;
+    margin-right: 35%;
+    margin-bottom: 20px;
+}
+.totall-prices{
+    border-top: 1px solid #000;
+    padding-top: 10px;
+}

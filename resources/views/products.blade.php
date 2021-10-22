@@ -25,10 +25,10 @@
                 <label for="customRange3" class="form-label">:محدوده ی قیمت</label>
                 <input type="range" class="form-range" value="0" min="0" max="5" step="1" id="customRange3">
                 <div class="range-price">
-                    <button>فیلتر</button>
                     <span></span>
                     <span>کمتر از 50</span>
                     <span>هزار تومان</span>
+                    <a href="">فیلتر</a>
                 </div>
             </div>
             <div class="title-container">

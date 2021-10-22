@@ -18,7 +18,9 @@ class CreateCommentsTable extends Migration
             $table->text('description');
             $table->string('email');
             $table->string('name');
-            $table->string('commentOn');
+            $table->boolean('active')->default(false);
+            $table->foreignId('product_id')->constrained()->onDelete('cascade');
+            $table->foreignId('weblog_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }

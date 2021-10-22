@@ -433,7 +433,7 @@
                             @forelse ($products as $product)
                                 <tr>
                                     <th scope="row">{{$loop->index + 1}}</th>
-                                    <td>{{$product->name}}</td>
+                                    <td><a href="{{ route('product-detail', $product->id) }}">{{Str::limit($product->name,40)}}</a></td>
                                     <td>{{$product->price}} تومان</td>
                                     <td>{{$product->inventory}}</td>
                                     <td><i id="proEditbtn" class="ti-pencil" onclick="showproducteditmodal({{$product->id}})"></i></td>
@@ -617,7 +617,7 @@
                             @forelse ($weblogs as $weblog)
                             <tr>
                                 <th scope="row">{{$loop->index + 1}}</th>
-                                <td>{{$weblog->title}}</td>
+                                <td><a href="{{ route('weblog-detail', $weblog->id) }}">{{Str::limit($weblog->title, 40)}}</a></td>
                                 <td>{{$weblog->created_at}}</td>
                                 <td><i class="ti-pencil" onclick="showweblogeditmodal({{$weblog->id}})"></i></td>
                                 <td><a href="{{ route('delete-weblog', $weblog->id) }}"><i class="ti-trash"></i></a></td>
@@ -693,60 +693,38 @@
                             <th scope="col">نام</th>
                             <th scope="col">ایمیل</th>
                             <th scope="col">تاریخ</th>
-                            <th scope="col">عنوان محصول/مطلب</th>
+                            <th scope="col">محصول/مطلب</th>
                             <th scope="col">تغییرات</th>
                         </tr>
                     </thead>
                     <tbody>
+
+                        @forelse ($comments as $comment)
                         <tr>
-                            <th scope="row">1</th>
-                            <td>علی علوی</td>
-                            <td>felani@yahoo.com</td>
-                            <td>1399/08/19</td>
-                            <td>زعفران قاین</td>
-                            <td><a href="#">تایید</a><span> / </span><a href="#">رد</a><span> / </span><a
-                                    href="#">مشاهده</a></td>
+                            <th scope="row">{{$loop->index + 1}}</th>
+                            <td>{{$comment->name}}</td>
+                            <td>{{$comment->email}}</td>
+                            <td>{{$comment->created_at}}</td>
+                            <td>
+                                @if ($comment->product_id == 0)
+                                <a href="{{ route('weblog-detail', $comment->weblog_id) }}" style="text-decoration: none">لینک مربوطه</a>
+                                @else
+                                <a href="{{ route('product-detail', $comment->product_id) }}" style="text-decoration: none">لینک مربوطه</a>
+                                @endif
+                            </td>
+                            <td><a href="{{ route('active_comment', $comment->id) }}">تایید</a><span> / </span><a href="{{ route('delete_comment', $comment->id) }}">حذف</a><span> / </span><a
+                                    href="#" onclick="showcommentModal({{$comment->id}})">مشاهده</a></td>
                         </tr>
+                        @empty
                         <tr>
-                            <th scope="row">2</th>
-                            <td>علی علوی</td>
-                            <td>felani@yahoo.com</td>
-                            <td>1399/08/19</td>
-                            <td>زعفران قاین</td>
-                            <td><a href="#">تایید</a><span> / </span><a href="#">رد</a><span> / </span><a
-                                    href="#">مشاهده</a></td>
+                            <td colspan="6" style="color:red; padding-right: 80px;">نظری وجود ندارد!</td>
                         </tr>
-                        <tr>
-                            <th scope="row">3</th>
-                            <td>علی علوی</td>
-                            <td>felani@yahoo.com</td>
-                            <td>1399/08/19</td>
-                            <td>زعفران قاین</td>
-                            <td><a href="#">تایید</a><span> / </span><a href="#">رد</a><span> / </span><a
-                                    href="#">مشاهده</a></td>
-                        </tr>
-                        <tr>
-                            <th scope="row">4</th>
-                            <td>علی علوی</td>
-                            <td>felani@yahoo.com</td>
-                            <td>1399/08/19</td>
-                            <td>زعفران قاین</td>
-                            <td><a href="#">تایید</a><span> / </span><a href="#">رد</a><span> / </span><a
-                                    href="#">مشاهده</a></td>
-                        </tr>
-                        <tr>
-                            <th scope="row">5</th>
-                            <td>علی علوی</td>
-                            <td>felani@yahoo.com</td>
-                            <td>1399/08/19</td>
-                            <td>زعفران قاین</td>
-                            <td><a href="#">تایید</a><span> / </span><a href="#">رد</a><span> / </span><a
-                                    href="#">مشاهده</a></td>
-                        </tr>
+                        @endforelse
+                        
                     </tbody>
                 </table>
 
-                <nav aria-label="Page navigation example">
+                <!--<nav aria-label="Page navigation example">
                     <ul class="pagination">
                         <li class="page-item">
                             <a class="page-link" href="#" aria-label="Previous">
@@ -762,18 +740,19 @@
                             </a>
                         </li>
                     </ul>
-                </nav>
+                </nav>-->
 
                 <div id="commentModal" class="comment-modal">
                     <div class="comment-modal-content">
                         <span class="comment-close">&times;</span>
-                        <form action="">
+                        <form action="" method="POST"> <!--route define in js-->
+                            @csrf
 
                             <label for="">متن پیام:</label>
-                            <textarea name="" id="" cols="30" rows="10"></textarea>
+                            <textarea name="description" id="" cols="30" rows="10"></textarea>
 
                             <label for="">پاسخ:</label>
-                            <textarea name="" id="" cols="30" rows="10"
+                            <textarea name="answer" cols="30" rows="10"
                                 placeholder="پاسخ خود را برای این نظر وارد کنید..."></textarea>
 
                             <button type="submit" class="btn btn-success">ثبت تغییرات</button>

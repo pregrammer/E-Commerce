@@ -35,7 +35,7 @@
             <div class="clipboard-left">
 
                 <div class="clipboard-left-top">
-                    @if ($ads->topOne)
+                    @if ($ads != null && $ads->topOne)
                     <a href="{{$ads->topOneLink}}" target="_blank"><img src="{{ asset("my_ad_images/" . Str::remove('siteee/', $ads->topOne)) }}" alt=""></a>
                     @else
                     <a href="#"><img src="{{ asset('images/camera2.jpg') }}" alt=""></a>
@@ -43,7 +43,7 @@
                 </div>
 
                 <div class="clipboard-left-bottom">
-                    @if ($ads->downOne)
+                    @if ($ads != null && $ads->downOne)
                     <a href="{{$ads->downOneLink}}" target="_blank"><img src="{{ asset("my_ad_images/" . Str::remove('siteee/', $ads->downOne)) }}" alt=""></a>
                     @else
                     <a href="#"><img src="{{ asset('images/lake.jpg') }}" alt=""></a>
@@ -123,7 +123,7 @@
                                     <img src="images/products/{{$wow_products_images[$loop->index]->firstImage}}" alt="">
                                 </div>
                                 <div class="wow-card-description">
-                                    <p>{{$wow_product->name}}</p>
+                                    <p>{{Str::limit($wow_product->name, 60)}}</p>
                                 </div>
                                 <div class="wow-card-price-detail">
                                     @if ($wow_product->inventory == 0)
@@ -165,25 +165,25 @@
 
         <div class="container four-ad-box">
 
-            @if ($ads->firstSquare)
+            @if ($ads != null && $ads->firstSquare)
             <a href="{{$ads->firstSquareLink}}" target="_blank"><img src="{{ asset("my_ad_images/" . Str::remove('siteee/', $ads->firstSquare)) }}" alt=""></a>
             @else
             <a href="#"><img src="{{ asset('images/giah2.jpg') }}" alt=""></a>
             @endif
 
-            @if ($ads->secondSquare)
+            @if ($ads != null && $ads->secondSquare)
             <a href="{{$ads->secondSquareLink}}" target="_blank"><img src="{{ asset("my_ad_images/" . Str::remove('siteee/', $ads->secondSquare)) }}" alt=""></a>
             @else
             <a href="#"><img src="{{ asset('images/giah2.jpg') }}" alt=""></a>
             @endif
 
-            @if ($ads->thirdSquare)
+            @if ($ads != null && $ads->thirdSquare)
             <a href="{{$ads->thirdSquareLink}}" target="_blank"><img src="{{ asset("my_ad_images/" . Str::remove('siteee/', $ads->thirdSquare)) }}" alt=""></a>
             @else
             <a href="#"><img src="{{ asset('images/giah2.jpg') }}" alt=""></a>
             @endif
 
-            @if ($ads->fourthSquare)
+            @if ($ads != null && $ads->fourthSquare)
             <a href="{{$ads->fourthSquareLink}}" target="_blank"><img src="{{ asset("my_ad_images/" . Str::remove('siteee/', $ads->fourthSquare)) }}" alt=""></a>
             @else
             <a href="#"><img src="{{ asset('images/giah2.jpg') }}" alt=""></a>
@@ -206,7 +206,7 @@
                             <img src="images/products/{{$new_products_images[$loop->index]->firstImage}}" alt="">
                         </div>
                         <div class="new-product-card-description">
-                            <p>{{$new_product->name}}</p>
+                            <p>{{Str::limit($new_product->name, 60)}}</p>
                         </div>
                         <div class="new-product-card-price-detail">
                             @if ($new_product->inventory == 0)
@@ -256,7 +256,7 @@
                             <img src="images/products/{{$most_sale_products_images[$loop->index]->firstImage}}" alt="">
                         </div>
                         <div class="most-sale-card-description">
-                            <p>{{$most_sale_product->name}}</p>
+                            <p>{{Str::limit($most_sale_product->name, 60)}}</p>
                         </div>
                         <div class="most-sale-card-price-detail">
                             @if ($most_sale_product->inventory == 0)

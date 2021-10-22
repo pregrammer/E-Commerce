@@ -13,9 +13,22 @@ class BasketController extends Controller
     {
         $product_cookie_data = stripslashes(Cookie::get('shopping_cart'));
         $shopping_cart_data = json_decode($product_cookie_data, true);
+        $has_profile = DB::table('user_details')->where('user_id', auth()->id())->first();
+        if ($has_profile) {
+            $is_profile_complete = true;
+        } else {
+            $is_profile_complete = false;
+        }
+        $modal_products = [];
+        if ($shopping_cart_data) {
+            $item_id_list = array_column($shopping_cart_data, 'item_id');
+            $modal_products = Product::whereIn('id', $item_id_list)->get();
+        }
 
-        return view('basket',[
-            'shopping_cart_data'=> $shopping_cart_data
+        return view('basket', [
+            'shopping_cart_data' => $shopping_cart_data,
+            'is_profile_complete' => $is_profile_complete,
+            'modal_products' => $modal_products
         ]);
     }
 
@@ -33,7 +46,7 @@ class BasketController extends Controller
         $prod_id_is_there = $pid;
 
         if (in_array($prod_id_is_there, $item_id_list)) {
-            return redirect('/')->with('status', 'این محصول قبلا به سبد خرید شما اضافه شده!');
+            return back()->with('status', '!این محصول قبلا به سبد خرید شما اضافه شده');
         } else {
             $product = Product::find($pid);
             $prod_name = $product->name;
@@ -54,7 +67,7 @@ class BasketController extends Controller
                 $item_data = json_encode($cart_data, JSON_UNESCAPED_UNICODE);
                 $minutes = 60;
                 Cookie::queue(Cookie::make('shopping_cart', $item_data, $minutes));
-                return redirect('/')->with('status', 'محصول مورد نظر با موفقیت به سبد خرید شما اضافه شد!');
+                return back()->with('status', '!محصول مورد نظر با موفقیت به سبد خرید شما اضافه شد');
             }
         }
     }
@@ -67,17 +80,14 @@ class BasketController extends Controller
         $item_id_list = array_column($cart_data, 'item_id');
         $prod_id_is_there = $pid;
 
-        if(in_array($prod_id_is_there, $item_id_list))
-        {
-            foreach($cart_data as $keys => $values)
-            {
-                if($cart_data[$keys]["item_id"] == $pid)
-                {
+        if (in_array($prod_id_is_there, $item_id_list)) {
+            foreach ($cart_data as $keys => $values) {
+                if ($cart_data[$keys]["item_id"] == $pid) {
                     unset($cart_data[$keys]);
                     $item_data = json_encode($cart_data, JSON_UNESCAPED_UNICODE);
                     $minutes = 60;
                     Cookie::queue(Cookie::make('shopping_cart', $item_data, $minutes));
-                    return redirect('/')->with('status', 'محصول مورد نظر با موفقیت از سبد خرید شما حذف شد!');
+                    return back()->with('status', 'محصول مورد نظر با موفقیت از سبد خرید شما حذف شد!');
                 }
             }
         }

@@ -12,6 +12,10 @@ $(document).ready(function () {
 
     /**************************************** */
 
+    $(".my_pd_alert").fadeTo(4000, 500).slideUp(500, function () {
+      $(this).slideUp(500);
+    });
+
     $('.related-product-cards button:first-child').click(function (e) {
       e.preventDefault();
       let f = $('.related-product-cards').scrollLeft() - 770;

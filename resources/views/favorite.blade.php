@@ -18,6 +18,15 @@
     
     <main class="container">
 
+        <div class="alert-ha-hastand">
+            @if (session('status'))
+            <div style="font-family: vazir; text-align: center;" class="alert alert-info alert-dismissible fade show al-mal my_fav_alert" role="alert">
+                <strong>{{ session('status') }}</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            @endif
+        </div>
+
         <h5>فهرست علاقه مندی محصولات</h5>
 
         <table class="table">
@@ -38,7 +47,7 @@
                         @forelse ($product_favorite_data as $data)
                         <tr>
                             <th scope="row"><img src="{{ asset('images/products/'. $data['item_image']) }}" alt=""></th>
-                            <td>{{$data['item_name']}}</td>
+                            <td>{{Str::limit($data['item_name'], 50)}}</td>
                             <td>{{$data['item_price']}} تومان</td>
                             <td><a href="{{ route('add_product_from_favorite_to_basket', $data['item_id']) }}"><i class="ti-check"></i></a></td>
                             <td><a href="{{ route('delete_product_from_favorite_cart', $data['item_id']) }}"><i class="ti-close"></i></a></td>
@@ -85,7 +94,7 @@
                         @forelse ($weblog_favorite_data as $data)
                         <tr>
                             <th scope="row">{{$loop->index + 1}}</th>
-                            <td>{{$data['item_title']}}</td>
+                            <td>{{Str::limit($data['item_title'], 50)}}</td>
                             <td><a href="{{ route('weblog-detail', $data['item_id']) }}">مطالعه</a></td>
                             <td><a href="{{ route('delete_weblog_from_favorite_cart', $data['item_id']) }}"><i class="ti-close"></i></a></td>
                         </tr>

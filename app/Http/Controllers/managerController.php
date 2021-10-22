@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Comment;
 use Illuminate\Support\Facades\DB;
 use App\Models\Message;
 use App\Models\Product;
@@ -36,12 +37,15 @@ class managerController extends Controller
 
         }
 
+        $comments = Comment::where('active', false)->latest()->paginate(15);
+
         return view('manager_panel', [
             'products' => $products,
             'weblogs' => $weblogs,
             'messages' => $messages,
             'users' => $users,
-            'users_details' => $users_details
+            'users_details' => $users_details,
+            'comments' => $comments,
         ]);
     }
 }

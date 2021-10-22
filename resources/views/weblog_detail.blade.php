@@ -38,6 +38,33 @@
 
         <div class="weblog-content">
 
+            <div class="alert-ha-hastand">
+                @if (session('status'))
+                <div style="position: absolute; width: 100%; font-family: vazir; text-align: center;" class="alert alert-info alert-dismissible fade show al-mal my_wd_alert" role="alert">
+                    <strong>{{ session('status') }}</strong>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+                @endif
+                @error('email', 'comment_errors')
+                <div style="position: absolute; width: 100%; font-family: vazir; text-align: center;" class="alert alert-danger alert-dismissible fade show al-mal my_wd_alert" role="alert">
+                    <strong>خطا در قسمت کامنت ها</strong>
+                    <!--<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>-->
+                </div>    
+                @enderror
+                @error('name', 'comment_errors')
+                <div style="position: absolute; width: 100%; font-family: vazir; text-align: center;" class="alert alert-danger alert-dismissible fade show al-mal my_wd_alert" role="alert">
+                    <strong>خطا در قسمت کامنت ها</strong>
+                    <!--<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>-->
+                </div>    
+                @enderror 
+                @error('description', 'comment_errors')
+                <div style="position: absolute; width: 100%; font-family: vazir; text-align: center;" class="alert alert-danger alert-dismissible fade show al-mal my_wd_alert" role="alert">
+                    <strong>خطا در قسمت کامنت ها</strong>
+                    <!--<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>-->
+                </div>    
+                @enderror
+            </div>
+
             <img src="{{ asset('images/weblogs/'.$weblog->image) }}" alt="">
 
             <div class="weblog-title">
@@ -65,56 +92,23 @@
 
                 <h3>نظرات کاربران</h3>
 
+                @forelse ($weblog_comments as $weblog_comment)
                 <div class="comment-card">
-                    <h5>علی علوی</h5>
-                    <p>1400/08/26</p>
-                    <p>بعضیا جوری به این لپ تاپ ایراد میگیرن انگار پول لپ تاپ نسل هشت core i7 رو پرداخت کردن
-                        اینو تحویل گرفتن....منصف باشین ...و توقعتون رو از چیزی که میخرین در حد متعادل نگه
-                        دارین...یکی هم میاد میگه این لپ تاپ گیمینگ نیست...دوست گرامی شما برو بیست میلیون بده
-                        گیمینگ بخر ...از اولشم نوشته شده این لپ تاپ مخصوص کارهای اداری و خونه و شخصی و
-                        تحصیلیه و بنظرم کیفیتش عالیه ...چقدر رفتار یه سریا منزجر کننده ست
-                    </p>
+                    <h5>{{$weblog_comment->name}}</h5>
+                    <p>{{$weblog_comment->created_at}}</p>
+                    <p>{{$weblog_comment->description}}</p>
+                    @if ($weblog_comments_answers[$loop->index] != '0')
                     <div class="reply-container">
                         <label>پاسخ:</label>
-                        <h6>
-                            با سلام. بله به زودی جایگزین خواهد شد. با سلام. بله به زودی جایگزین خواهد شد. با
-                            سلام. بله به زودی جایگزین خواهد شد. با سلام. بله به زودی جایگزین خواهد شد. با
-                            سلام. بله به زودی جایگزین خواهد شد.
-                        </h6>
+                        <h6>{{$weblog_comments_answers[$loop->index]}}</h6>
                     </div>
+                    @endif
                 </div>
-                <div class="comment-card">
-                    <h5>علی علوی</h5>
-                    <p>1400/08/26</p>
-                    <p>بعضیا جوری به این لپ تاپ ایراد میگیرن انگار پول لپ تاپ نسل هشت core i7 رو پرداخت کردن
-                        اینو تحویل گرفتن....منصف باشین ...و توقعتون رو از چیزی که میخرین در حد متعادل نگه
-                        دارین...یکی هم میاد میگه این لپ تاپ گیمینگ نیست...دوست گرامی شما برو بیست میلیون بده
-                        گیمینگ بخر ...از اولشم نوشته شده این لپ تاپ مخصوص کارهای اداری و خونه و شخصی و
-                        تحصیلیه و بنظرم کیفیتش عالیه ...چقدر رفتار یه سریا منزجر کننده ست
-                    </p>
-                </div>
-                <div class="comment-card">
-                    <h5>علی علوی</h5>
-                    <p>1400/08/26</p>
-                    <p>بعضیا جوری به این لپ تاپ ایراد میگیرن انگار پول لپ تاپ نسل هشت core i7 رو پرداخت کردن
-                        اینو تحویل گرفتن....منصف باشین ...و توقعتون رو از چیزی که میخرین در حد متعادل نگه
-                        دارین...یکی هم میاد میگه این لپ تاپ گیمینگ نیست...دوست گرامی شما برو بیست میلیون بده
-                        گیمینگ بخر ...از اولشم نوشته شده این لپ تاپ مخصوص کارهای اداری و خونه و شخصی و
-                        تحصیلیه و بنظرم کیفیتش عالیه ...چقدر رفتار یه سریا منزجر کننده ست
-                    </p>
-                </div>
-                <div class="comment-card">
-                    <h5>علی علوی</h5>
-                    <p>1400/08/26</p>
-                    <p>بعضیا جوری به این لپ تاپ ایراد میگیرن انگار پول لپ تاپ نسل هشت core i7 رو پرداخت کردن
-                        اینو تحویل گرفتن....منصف باشین ...و توقعتون رو از چیزی که میخرین در حد متعادل نگه
-                        دارین...یکی هم میاد میگه این لپ تاپ گیمینگ نیست...دوست گرامی شما برو بیست میلیون بده
-                        گیمینگ بخر ...از اولشم نوشته شده این لپ تاپ مخصوص کارهای اداری و خونه و شخصی و
-                        تحصیلیه و بنظرم کیفیتش عالیه ...چقدر رفتار یه سریا منزجر کننده ست
-                    </p>
-                </div>
+                @empty
+                    <p class="alert alert-info" style="text-align: right; font-family: vazir;">در حال حاضر نظری راجع به این مطلب نوشته نشده است.</p>
+                @endforelse
 
-                <nav aria-label="Page navigation example">
+                <!--<nav aria-label="Page navigation example">
                     <ul class="pagination">
                         <li class="page-item">
                             <a class="page-link" href="#" aria-label="Previous">
@@ -130,17 +124,27 @@
                             </a>
                         </li>
                     </ul>
-                </nav>
+                </nav>-->
+                
             </div>
 
             <div class="add-comment-container">
                 <h5>نظر خود را بنویسید</h5>
-                <form action="">
-                    <div class="">
-                        <input type="text" placeholder="نام خود را وارد کنید">
-                        <input type="email" placeholder="ایمیل خود را وارد کنید">
+                <form action="{{ route('store-weblog-comment', $weblog->id) }}" method="POST">
+                    @csrf
+                    <div class="d-flex">
+                        <div>
+                            <input type="text" name="name" value="{{old('name')}}" placeholder="نام خود را وارد کنید" class="@error('name', 'comment_errors') border border-danger @enderror">
+                            @error('name', 'comment_errors') <small class="text-danger d-block">{{ $message }}</small> @enderror
+                        </div>
+                        <div>
+                            <input type="email" name="email" value="{{old('email')}}" placeholder="ایمیل خود را وارد کنید" class="@error('email', 'comment_errors') border border-danger @enderror">
+                            @error('email', 'comment_errors') <small class="text-danger d-block">{{ $message }}</small> @enderror
+                        </div>
                     </div>
-                    <textarea name="" id="" cols="40" rows="7" placeholder="نظر خود را وارد کنید"></textarea>
+                    <textarea name="description" cols="40" rows="7" class="@error('description', 'comment_errors') border border-danger @enderror"
+                        placeholder="نظر خود را وارد کنید">{{old('description')}}</textarea>
+                        @error('description', 'comment_errors') <small class="text-danger d-block">{{ $message }}</small> @enderror
                     <div>
                         <button type="submit" class="btn btn-success">ارسال نظر</button>
                     </div>

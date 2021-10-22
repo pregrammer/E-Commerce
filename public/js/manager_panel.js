@@ -44,8 +44,6 @@ $(document).ready(function () {
 
 
 
-
-
     var proeditmodal = document.getElementById("proEditModal");
     $('.pro-edit-close').click(function (e) {
         e.preventDefault();
@@ -57,19 +55,6 @@ $(document).ready(function () {
         e.preventDefault();
         weblogeditmodal.style.display = "none";
     });
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -181,4 +166,17 @@ function showweblogeditmodal(wid) {
     });
 
     document.getElementById("weblogEditModal").style.display = "block";
+}
+
+function showcommentModal(cid) {
+    $.get("/get-comment/" + cid, function (data, status) {
+        //alert("Data: " + data.title + "\nStatus: " + status);
+
+        $('#commentModal form').attr('action', "/affect-on-comment/" + cid);
+
+        $('#commentModal form textarea:first-of-type').val(data.description);
+        $('#commentModal form textarea:last-of-type').val(data.answer);
+    });
+
+    document.getElementById("commentModal").style.display = "block";
 }

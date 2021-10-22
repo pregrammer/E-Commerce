@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Comment;
 use App\Models\Weblog;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
 class WeblogController extends Controller
@@ -13,10 +15,23 @@ class WeblogController extends Controller
         $weblog = Weblog::find($wid);
         $suggestion_weblogs = Weblog::select('id','title')->where('groupKind', $weblog->groupKind)->where('id', '<>', $wid)->take(10)->get();
         Weblog::where('id', $wid)->increment('hit');
+        $weblog_comments = Comment::where('active', true)->where('weblog_id', $wid)->paginate(5);
+        $weblog_comments_answers = array();
+        foreach ($weblog_comments as $weblog_comment)
+        {
+            $pcs = DB::table('comment_answers')->where('comment_id', $weblog_comment->id)->select('description')->first();
+            if ($pcs){
+                $weblog_comments_answers[] = $pcs->description;
+            }else{
+                $weblog_comments_answers[] = '0';
+            }
+        }
 
         return view('weblog_detail',[
             'weblog' => $weblog,
-            'suggestion_weblogs' => $suggestion_weblogs
+            'suggestion_weblogs' => $suggestion_weblogs,
+            'weblog_comments' => $weblog_comments,
+            'weblog_comments_answers' => $weblog_comments_answers
         ]);
     }
 
@@ -104,6 +119,7 @@ class WeblogController extends Controller
             'description' => $weblog->description
         ]);
     }
+    
     public function edit(Request $request, $wid)
     {
 

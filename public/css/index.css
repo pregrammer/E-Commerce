@@ -383,12 +383,12 @@ main{
 .most-sale-card-description{
     min-height: 40px;
     max-height: 40px;
-    margin: 20px 0;
+    margin: 20px 0 10px 0;
 }
 .new-product-card-description p,
 .most-sale-card-description p{
     font-family: vazir;
-    font-size: 13px;
+    font-size: 15px;
     direction: rtl;
     color: rgb(112, 110, 110);
 }

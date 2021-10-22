@@ -1,10 +1,12 @@
 <?php
 
 use App\Http\Controllers\BasketController;
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\FavoriteController;
 use App\Http\Controllers\indexController;
 use App\Http\Controllers\managerController;
 use App\Http\Controllers\MessageController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\sitepropertyController;
 use App\Http\Controllers\useraccountController;
@@ -51,12 +53,19 @@ Route::post('/contact-us/send-message', [MessageController::class, 'store'])->na
 
 Route::get('/product-detail/{pid}', [ProductController::class, 'indexd'])->name('product-detail');
 Route::get('/products/{gk}', [ProductController::class, 'indexs'])->name('products');
+Route::get('/products/{gk}/{num}', [ProductController::class, 'products_filter'])->name('products-filter');
 Route::post('/product-detail/add', [ProductController::class, 'store'])->name('add-product');
 Route::post('/product-detail/edit/{pid}', [ProductController::class, 'edit']);
 Route::get('/get-product/{pid}', [ProductController::class, 'get_product_by_id']);
 Route::get('/delete-product/{pid}', [ProductController::class, 'delete'])->name('delete-product');
 
 
+Route::post('/submit-product-comment/{pid}', [CommentController::class, 'store_product_comment'])->name('store-product-comment');
+Route::post('/submit-weblog-comment/{pid}', [CommentController::class, 'store_weblog_comment'])->name('store-weblog-comment');
+Route::get('/active-comment/{cid}', [CommentController::class, 'active_comment'])->name('active_comment');
+Route::get('/delete-comment/{cid}', [CommentController::class, 'delete_comment'])->name('delete_comment');
+Route::get('/get-comment/{cid}', [CommentController::class, 'get_comment'])->name('get_comment');
+Route::post('/affect-on-comment/{cid}', [CommentController::class, 'edit_comment_and_submit_answer'])->name('edit_comment_and_submit_answer');
 
 
 Route::get('/weblog-detail/{wid}', [WeblogController::class, 'indexd'])->name('weblog-detail');
@@ -86,3 +95,6 @@ Route::get('/favorite/product/add-to-basket/{pid}', [FavoriteController::class, 
 
 Route::get('/favorite/weblog/add/{wid}', [FavoriteController::class, 'add_to_favorite_weblog'])->name('add_to_favorite_weblog');
 Route::get('/favorite/weblog/delete/{wid}', [FavoriteController::class, 'delete_weblog_from_favorite_cart'])->name('delete_weblog_from_favorite_cart');
+
+Route::post('/basket/order/first-step', [OrderController::class, 'first_step'])->name('first_step');
+Route::post('/basket/order/buy/{price}', [OrderController::class, 'sss']);

@@ -13,8 +13,8 @@ class Comment extends Model
         'description',
         'email',
         'name',
-        'commentOn',
-        'answer',
+        'product_id',
+        'weblog_id',
     ];
 
     public function product()

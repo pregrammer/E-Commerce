@@ -64,7 +64,6 @@ class useraccountController extends Controller
         /*if (!auth()->attempt($request->only('email', 'password'), $request->remember)) {
             return back()->with('status', 'Invalid login details');
         }*/
-        dd($request->remember);
         
         if (! Auth::attempt(['email' => $request->email, 'password' => $request->password, 'active' => 1], $request->remember))
         {

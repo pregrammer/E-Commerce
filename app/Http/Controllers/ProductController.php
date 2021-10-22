@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Comment;
 use App\Models\Product;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
@@ -23,13 +24,27 @@ class ProductController extends Controller
             $related_products_images[] = DB::table('products_images')->where('product_id', $related_product->id)->select('firstImage')->first();
         }
 
+        $product_comments = Comment::where('active', true)->where('product_id', $pid)->paginate(5);
+        $product_comments_answers = array();
+        foreach ($product_comments as $product_comment)
+        {
+            $pcs = DB::table('comment_answers')->where('comment_id', $product_comment->id)->select('description')->first();
+            if ($pcs){
+                $product_comments_answers[] = $pcs->description;
+            }else{
+                $product_comments_answers[] = '0';
+            }
+        }
+
         return view('product_detail',[
             'product' => $product,
             'product_images' => $product_images,
             'product_properties' => $product_properties,
             'product_features' => $product_features,
             'related_products' => $related_products,
-            'related_products_images' => $related_products_images
+            'related_products_images' => $related_products_images,
+            'product_comments' => $product_comments,
+            'product_comments_answers' => $product_comments_answers
         ]);
     }
 
@@ -105,6 +120,47 @@ class ProductController extends Controller
             'gk' => $gk
         ]);
     }
+
+    public function products_filter($gk,$num)
+    {
+        switch ($num) {
+            case 0:
+                $products = Product::where('groupKind', $gk)->where('price', '<', 50000)->paginate(12);
+                break;
+            
+            case 1:
+                $products = Product::where('groupKind', $gk)->where('price', '<', 100000)->paginate(12);
+                break;
+
+            case 2:
+                $products = Product::where('groupKind', $gk)->where('price', '<', 200000)->paginate(12);
+                break;
+                
+            case 3:
+                $products = Product::where('groupKind', $gk)->where('price', '<', 300000)->paginate(12);
+                break;
+
+            case 4:
+                $products = Product::where('groupKind', $gk)->where('price', '<', 400000)->paginate(12);
+                break;
+                    
+            case 5:
+                $products = Product::where('groupKind', $gk)->where('price', '>', 400000)->paginate(12);
+                break;
+        }
+        $products_images = array();
+        foreach ($products as $product)
+        {
+            $products_images[] = DB::table('products_images')->where('product_id', $product->id)->select('firstImage')->first();
+        }
+
+        return view('products',[
+            'products' => $products,
+            'products_images' => $products_images,
+            'gk' => $gk
+        ]);
+    }
+
     public function get_product_by_id($pid)
     {
 
@@ -138,6 +194,7 @@ class ProductController extends Controller
             'fifthProp' => $products_properties->fifthProp
         ]);
     }
+
     public function edit(Request $request, $pid)
     {
 
@@ -236,4 +293,5 @@ class ProductController extends Controller
 
         return redirect('/manager-panel')->with('status', 'محصول مورد نظر با موفقیت حذف شد!');
     }
+    
 }
